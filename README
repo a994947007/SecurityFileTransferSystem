@@ -1,1 +1,21 @@
 The server is used to cache all connected clients,Clients can transfer files to each other by id.
+
+1. Client A connects to the server, and client B connects to the server.
+
+2. Client A enters client B's id and sends its own id and client B's id to the server.
+
+3. After receiving the two ids sent by client A, the server generates the asymmetric public key and private key and saves them to the cache, and sends the public key and the IP address of B to A together.
+
+4. Client A sends Hello to client B.
+
+5. After client B receives Hello, it obtains the private key from the server.
+
+6. Client A generates the symmetric key and sends it to B with public key encryption.
+
+7. Client B receives the symmetric key after encryption and decrypts it with the private key to obtain the symmetric key.
+
+8. Client A is sent to client B, which is encrypted through symmetric key.
+
+9. Client B receives the encrypted file data and decrypts it through the symmetric key.
+
+10. The client sends the terminator and disconnects from client B.
